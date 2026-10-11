@@ -7,8 +7,8 @@
 
 <p align="center">
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="https://skillicons.dev/icons?i=go,ts,js,py,bash,linux,arch,windows,git,githubactions&theme=dark&perline=10">
-    <img alt="Go, TypeScript, JavaScript, Python, Bash, Linux, Arch, Windows, Git, GitHub Actions" src="https://skillicons.dev/icons?i=go,ts,js,py,bash,linux,arch,windows,git,githubactions&theme=light&perline=10">
+    <source media="(prefers-color-scheme: dark)" srcset="https://skillicons.dev/icons?i=go%2Cts%2Cjs%2Cpy%2Cbash%2Clinux%2Carch%2Cwindows%2Cgit%2Cgithubactions&theme=dark&perline=10">
+    <img alt="Go, TypeScript, JavaScript, Python, Bash, Linux, Arch, Windows, Git, GitHub Actions" src="https://skillicons.dev/icons?i=go%2Cts%2Cjs%2Cpy%2Cbash%2Clinux%2Carch%2Cwindows%2Cgit%2Cgithubactions&theme=light&perline=10">
   </picture>
 </p>
 
