@@ -1,0 +1,40 @@
+name: profile
+
+on:
+  schedule:
+    - cron: "17 3 * * *"
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-go@v6
+        with: { go-version: "1.25.x", cache: false }
+      - name: statistics card
+        working-directory: card
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: go run . -user "${{ github.repository_owner }}" -out ../dist
+      - name: contribution snake
+        uses: Platane/snk/svg-only@v3.5.0
+        with:
+          github_user_name: ${{ github.repository_owner }}
+          outputs: |
+            dist/snake-dark.svg?color_snake=#b3a6ff&color_dots=#161b26,#1f2b47,#2f4a7f,#5c86c9,#a9d6ff
+            dist/snake-light.svg?color_snake=#6a5acd&color_dots=#ebeef3,#cfe0ff,#9dbcf2,#5b83d6,#2f4fa8
+      - name: publish to the output branch
+        run: |
+          cd dist
+          git init -q -b output
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -q -m "update profile images"
+          git push -q -f "https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git" output
